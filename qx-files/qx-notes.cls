@@ -8,8 +8,8 @@
 % ==============================================================================
 
 
+% This load special if commands, to make comparations
 \RequirePackage{etoolbox}
-\RequirePackage{ifthen}
 
 
 % ==============================================================================
@@ -18,7 +18,11 @@
 %
 % ==============================================================================
 
-% Create boolean variables to store the options
+% Create boolean variables to store the options. Per default, this new ifs will
+% be created by the \DeclareKeys, but I put here for clarification
+% \newif\ifqx@pagecolor
+% \newif\ifqx@stretchmode
+% \newif\ifqx@draftmode
 
 \DeclareKeys[qx-notes]{
   pagecolor.if = qx@pagecolor,
@@ -28,15 +32,15 @@
   stretchmode.if = qx@stretchmode,
   %
   draft.if = qx@draftmode,
-  %
-  store.store = \mystore
 }
 
 \ProcessKeyOptions
 
 
 % Set default values for options
-\ifdefvoid{\qx@pageSize}{\renewcommand*\qx@pageSize{letterpaper}}{}
+\ifdefempty{\qx@pageSize}{%
+  \renewcommand*\qx@pageSize{letterpaper}%
+}{}
 
 
 
@@ -48,7 +52,9 @@
 % ==============================================================================
 
 % Pass draft mode to article class
-  \ifqx@draftmode \PassOptionsToClass{draft}{article}
+\ifqx@draftmode
+  \PassOptionsToClass{draft}{article}%
+\fi
 
 % Base document class
 \LoadClass{article}
@@ -63,7 +69,7 @@
 
 
 % Page size control packages
-\ifthenelse{\equal{\qx@pageSize}{mobile}}{%
+\ifdefstring{\qx@pageSize}{mobile}{%
   \PassOptionsToPackage{
     paperwidth  = 3.5in,
     paperheight = 7.5in,
@@ -76,7 +82,8 @@
 \RequirePackage{geometry}
 
 
-
+% Load of theme colors. This always will be mocha. Maybe in a future I will change
+% to accept other catppuccin colors
 \PassOptionsToPackage{style=mocha}{catppuccinpalette}
 \RequirePackage{catppuccinpalette}
 
@@ -106,7 +113,7 @@
 % Stretch Mode -----------------------------------------------------------------
 \ifqx@stretchmode
   \emergencystretch=1in%
-  \hbadness=10000
+  \hbadness=10000%
 \fi
 
 
