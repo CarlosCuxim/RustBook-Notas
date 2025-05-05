@@ -95,7 +95,7 @@
 \tcbset{
   default minted options={
     tabsize=2,
-    fontsize=\footnotesize,
+    fontsize=\small,
     breaklines,
     autogobble,
     stripnl,
@@ -134,9 +134,7 @@
 \NewTotalTCBox{\codeline}{ v }{
   qx-linelisting,
   on line,
-}{%
-  \mintinline{\qx@mainlanguage}{#1}%
-}
+}{\mintinline{\qx@mainlanguage}{#1}}
 
 
 \endinput
