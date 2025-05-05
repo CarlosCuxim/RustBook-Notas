@@ -59,8 +59,6 @@
   \usemintedstyle{catppuccin-mocha} 
 
 
-\RequirePackage{soulpos}
-
 
 % ==============================================================================
 %
@@ -95,6 +93,14 @@
 
 % Global style and settings for tcolorbox
 \tcbset{
+  default minted options={
+    tabsize=2,
+    fontsize=\footnotesize,
+    breaklines,
+    autogobble,
+    stripnl,
+  },
+  %
   qx-listing/.style={
     colback=qx-codebg,
     coltext=qx-text,
@@ -108,6 +114,7 @@
     frame hidden,
     breakable,
   },
+  %
   qx-linelisting/.style={
     qx-listing,
     arc=0.5mm,
@@ -123,9 +130,13 @@
   minted language=#1
 }
 
-% In line code command. This is defined using soulpos package so can break when a
-% line break occur
-
+% In line code command. Is no breakable, so must contain very few text
+\NewTotalTCBox{\codeline}{ v }{
+  qx-linelisting,
+  on line,
+}{%
+  \mintinline{\qx@mainlanguage}{#1}%
+}
 
 
 \endinput
