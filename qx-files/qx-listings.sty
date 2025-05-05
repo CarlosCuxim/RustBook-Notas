@@ -1,0 +1,131 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{qx-files/qx-listings}[2025-05-04 Qx package for listing boxes and environments]
+
+
+% ==============================================================================
+%
+% PRELIMINARY DECLARATIONS =====================================================
+%
+% ==============================================================================
+
+
+% This load special if commands, to make comparations
+\RequirePackage{etoolbox}
+
+
+% ==============================================================================
+%
+% OPTIONS DECLARATION
+%
+% ==============================================================================
+
+
+
+% Create boolean variables to store the options. Per default, this new ifs will
+% be created by the \DeclareKeys, but I put here for clarification
+% \newif\ifqx@pagecolor
+
+\DeclareKeys[qx-listings]{
+  pagecolor.if = qx@pagecolor,
+}
+
+\ProcessKeyOptions
+
+
+% ==============================================================================
+%
+% PACKAGE LOADING
+%
+% ==============================================================================
+
+
+% Load of theme colors. This always will be mocha. Maybe in a future I will change
+% to accept other catppuccin colors
+\PassOptionsToPackage{style=mocha}{catppuccinpalette}
+\RequirePackage{catppuccinpalette}
+
+
+% Box and listings package
+\RequirePackage{tcolorbox}
+  \tcbuselibrary{minted}
+  \tcbuselibrary{skins}
+  \tcbuselibrary{breakable}
+  %
+  \usetikzlibrary{babel}
+  \usetikzlibrary{calc}
+  \usetikzlibrary{backgrounds}
+  \usetikzlibrary{arrows.meta}
+  %
+  \usemintedstyle{catppuccin-mocha} 
+
+
+\RequirePackage{soulpos}
+
+
+% ==============================================================================
+%
+% PACKAGE DECLARATIONS
+%
+% ==============================================================================
+
+
+
+% Theme Declaration ------------------------------------------------------------
+
+
+\colorlet{qx-page}{CtpBase}%
+\colorlet{qx-text}{CtpText}%
+
+% If pagecolor is true, then the code background will be crust, so is darker than the background
+\ifqx@pagecolor
+  \colorlet{qx-codebg}{CtpCrust}
+\else
+  \colorlet{qx-codebg}{CtpBase}
+\fi
+
+
+% Listing Environments ---------------------------------------------------------
+
+% Command to set the main languaje
+\newcommand*\qx@mainlanguage{latex}
+\NewDocumentCommand\setmainlanguage{ m }{%
+  \renewcommand*\qx@mainlanguage{#1}%
+}
+
+
+% Global style and settings for tcolorbox
+\tcbset{
+  qx-listing/.style={
+    colback=qx-codebg,
+    coltext=qx-text,
+    %
+    left=0mm, right=0mm,
+    top=0mm, bottom=0mm,
+    boxsep=2mm,
+    boxrule=0pt, arc=1mm,
+    %
+    enhanced,
+    frame hidden,
+    breakable,
+  },
+  qx-linelisting/.style={
+    qx-listing,
+    arc=0.5mm,
+    boxsep=0.5mm,
+  }
+}
+
+
+% Basic code block environmet 
+\NewTCBListing{codeblock}{ !O{\qx@mainlanguage} }{
+  qx-listing,
+  listing only,
+  minted language=#1
+}
+
+% In line code command. This is defined using soulpos package so can break when a
+% line break occur
+
+
+
+\endinput

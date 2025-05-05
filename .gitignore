@@ -1,12 +1,8 @@
 # Directorios
 _minted/
+aux/
 
 # Extensiones
-*.aux
-*.fdb_latexmk
-*.fls
-*.log
 *.pdf
 *.dvi
 *.synctex.gz
-*.listing

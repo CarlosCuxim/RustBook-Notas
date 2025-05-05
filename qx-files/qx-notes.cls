@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{qx-files/qx-notes}[2024-11-24 Qx package for notes creation]
+\ProvidesClass{qx-files/qx-notes}[2025-05-04 Qx class for multipurpose notes creation]
 
 % ==============================================================================
 %
@@ -26,6 +26,7 @@
 
 \DeclareKeys[qx-notes]{
   pagecolor.if = qx@pagecolor,
+  pagecolor.pass-to-packages = true,
   %
   pagesize.store = \qx@pageSize,
   %
@@ -82,25 +83,8 @@
 \RequirePackage{geometry}
 
 
-% Load of theme colors. This always will be mocha. Maybe in a future I will change
-% to accept other catppuccin colors
-\PassOptionsToPackage{style=mocha}{catppuccinpalette}
-\RequirePackage{catppuccinpalette}
+\RequirePackage{qx-files/qx-listings}
 
-
-
-% Box and listings package
-\RequirePackage{tcolorbox}
-  \tcbuselibrary{minted}
-  \tcbuselibrary{skins}
-  \tcbuselibrary{breakable}
-  %
-  \usetikzlibrary{babel}
-  \usetikzlibrary{calc}
-  \usetikzlibrary{backgrounds}
-  \usetikzlibrary{arrows.meta}
-  %
-  \usemintedstyle{catppuccin-mocha} 
 
 
 
@@ -118,16 +102,6 @@
 
 
 % Theme Declaration ------------------------------------------------------------
-
-
-\colorlet{qx-page}{CtpBase}%
-\colorlet{qx-text}{CtpText}%
-\colorlet{qx-codebg}{CtpBase}
-\colorlet{qx-codeframe}{CtpOverlay2}
-\colorlet{qx-buttonbg}{CtpCrust}%
-\colorlet{qx-buttontext}{CtpSubtext1}%
-\colorlet{qx-buttonframe}{CtpOverlay0}%
-\colorlet{qx-note}{CtpBlue}
 
 
 \ifqx@pagecolor

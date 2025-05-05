@@ -1,4 +1,7 @@
-\documentclass[pagesize=a5paper]{qx-files/qx-notes}
+\documentclass[pagecolor=false, pagesize=a5paper, stretchmode]{qx-files/qx-notes}
+
+\usepackage{qx-files/qx-listings}
+\setmainlanguage{rust}
 
 
 
@@ -20,16 +23,58 @@
 \begin{document}
   \maketitle
 
-  Este es una prueba acerca de la utilidad de las opciones de latex. Estaré probando muchas opciones,
-  por lo que podría no se tan util la información obtenida por aquí. No lo sé en realidad, solo estoy
-  divagando para poder rellenar algunos parrafos y ver como funciona las distintas modalidades que
-  esta clase ofrece. Estoy mas o igual de perdido que cualquier lector que podría haber aquí, dado que
-  estoy suponiendo que soy solo yo, quiero decir, al final si uno mismo es toda la publación de estudio,
-  entonces las características del individuo se vuelven las características del global, es una cosas muy
-  interesante si me lo preguntas a mi. En todo caso estoy pensando en varias alternativas, pero escribir
-  a lo estúpido no es tan mala idea si me lo preguntas.
+  Esta madre es un ejemplo de un listing del lenguaje rust. Estoy tratando de ver
+  como se comporta con respecto al texto y los saltos de linea.
 
-  \ttfamily
+
+  \begin{codeblock}
+    // Code taken from the Rust Book. Guessing game of section 2
+
+    use rand::Rng;
+    use std::cmp::Ordering;
+    use std::io;
+
+    fn main() {
+      println!("Guess the number!");
+
+      let secret_number = rand::thread_rng().gen_range(1..=100);
+
+      loop {
+        println!("Please input your guess.");
+
+        let mut guess = String::new();
+
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to read line");
+
+        let guess: u32 = match guess.trim().parse() {
+          Ok(num) => num,
+          Err(_) => continue,
+        };
+
+        println!("You guessed: {guess}");
+
+        match guess.cmp(&secret_number) {
+          Ordering::Less => println!("Too small!"),
+          Ordering::Greater => println!("Too big!"),
+          Ordering::Equal => {
+            println!("You win!");
+            break;
+          }
+        }
+      }
+    }
+  \end{codeblock}
+
+
+  \begin{codeblock}
+    0 _______ 10 ______ 20 ______ 30 ______ 40 ______ 50 ______ 60 ______ 70 _______
+  \end{codeblock}
+
+  Hello no no no pero si que no
+  \mintinline[breaklines]{rust}{let mut hello = String::new("Everynyan");}
+  Adios asdfl dsj asfjas fjasklf jasl;kdfj aslfjasdfjasklf ;lkaskfj jaslf as;lkfkas fasf 
 
 
 \end{document}
