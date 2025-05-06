@@ -1,17 +1,17 @@
-   Compiling variables_002 v0.1.0 (/home/kaoru/Workspace/RustBook-Notas/listings/variables_002)
+   Compiling variables_002 v0.1.0 (/home/.../variables_002)
 error[E0384]: cannot assign twice to immutable variable `x`
- --> src/main.rs:4:5
+ --> src/main.rs:4:3
   |
-2 |     let x = 5;
-  |         - first assignment to `x`
-3 |     println!("El valor de x es: {x}");
-4 |     x = 6;
-  |     ^^^^^ cannot assign twice to immutable variable
+2 |   let x = 5;
+  |       - first assignment to `x`
+3 |   println!("El valor de x es: {x}");
+4 |   x = 6;
+  |   ^^^^^ cannot assign twice to immutable variable
   |
 help: consider making this binding mutable
   |
-2 |     let mut x = 5;
-  |         +++
+2 |   let mut x = 5;
+  |       +++
 
 For more information about this error, try `rustc --explain E0384`.
 error: could not compile `variables_002` (bin "variables_002") due to 1 previous error
