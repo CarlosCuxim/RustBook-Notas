@@ -24,8 +24,7 @@
   \maketitle
 
   Esta madre es un ejemplo de un listing del lenguaje rust. Estoy tratando de ver
-  como se comporta con respecto al texto y los saltos de linea.
-
+  como se comporta con respecto al texto y los saltos de lineas
 
   \begin{codeblock}
     // Code taken from the Rust Book. Guessing game of section 2
@@ -67,13 +66,39 @@
     }
   \end{codeblock}
 
+  \begin{codeblock}[c++]
+    // Necessary header files for input output functions
+    #include <iostream>
+    using namespace std;
 
-  \begin{codeblock}
-    0 _______ 10 ______ 20 ______ 30 ______ 40 ______ 50 ______ 60 ______ 70 _______
+    // main() function: where the execution of
+    // C++ program begins
+    int main() {
+      
+        // This statement prints "Hello World"
+        cout << "Hello World";
+
+        return 0;
+    }
   \end{codeblock}
+
+
+  \begin{verbblock}
+    0 _______ 10 ______ 20 ______ 30 ______ 40 ______ 50 ______ 60 ______ 70 _______
+  \end{verbblock}
 
   Supongamos que tenemos un parrafo, me gustaría observar como es que
   \codeline{let mut s = String::new("Hello");} se vería a la mitad de un parrafo, no estoy segura de que es lo que busco, pero si de lo que no se ve.
+  
+  Tengo que probar el verb \verbline{verb&text} para ver si funciona, tambien tengo que 
+  escribir \codeline[python]{print("Hello")}.
+
+  Ahora probaré agregar un listing mediante un comando
+
+  \inputcode{listings/hello_world.rs}
+  \inputcode[python]{listings/py_hello.py}
+  \inputverb{listings/output.txt}
 
 
 \end{document}
+
