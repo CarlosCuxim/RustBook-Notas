@@ -2,5 +2,10 @@
 \ProvidesPackage{qx-files/qx-aux}[2025-05-04 Qx package for auxiliar definitions]
 
 
+\NewDocumentCommand\inputexample{ m }{%
+  \inputcode{./listings/#1/src/main.rs}%
+  \inputcode{./listings/#1/output.txt}%
+}
+
 
 \endinput
