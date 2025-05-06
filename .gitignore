@@ -1,8 +1,10 @@
 # Directorios
 _minted/
 aux/
+target/
 
 # Extensiones
 *.pdf
 *.dvi
 *.synctex.gz
+*.lock

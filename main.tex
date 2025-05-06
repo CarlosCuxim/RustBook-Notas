@@ -1,79 +1,24 @@
-\documentclass[pagecolor=true, pagesize=a5paper, stretchmode]{qx-files/qx-notes}
+\documentclass[pagesize=a5paper, pagecolor, stretchmode]{qx-files/qx-notes}
 
 \usepackage{qx-files/qx-listings}
 \setmainlanguage{rust}
-
 
 
 % IDIOMA ========================================================
 \usepackage[spanish, mexico]{babel}
 
 
-
 % DATOS =========================================================
-\title{Test file}
+\title{Rust Book Notas}
 \author{Qx}
 \date{\today}
 
 
 
-\usepackage{lipsum}
-
-
 \begin{document}
   \maketitle
 
-  Esta madre es un ejemplo de un listing del lenguaje rust. Estoy tratando de ver
-  como se comporta con respecto al texto y los saltos de linea.
-
-
-  \begin{codeblock}
-    // Code taken from the Rust Book. Guessing game of section 2
-
-    use rand::Rng;
-    use std::cmp::Ordering;
-    use std::io;
-
-    fn main() {
-      println!("Guess the number!");
-
-      let secret_number = rand::thread_rng().gen_range(1..=100);
-
-      loop {
-        println!("Please input your guess.");
-
-        let mut guess = String::new();
-
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Failed to read line");
-
-        let guess: u32 = match guess.trim().parse() {
-          Ok(num) => num,
-          Err(_) => continue,
-        };
-
-        println!("You guessed: {guess}");
-
-        match guess.cmp(&secret_number) {
-          Ordering::Less => println!("Too small!"),
-          Ordering::Greater => println!("Too big!"),
-          Ordering::Equal => {
-            println!("You win!");
-            break;
-          }
-        }
-      }
-    }
-  \end{codeblock}
-
-
-  \begin{codeblock}
-    0 _______ 10 ______ 20 ______ 30 ______ 40 ______ 50 ______ 60 ______ 70 _______
-  \end{codeblock}
-
-  Supongamos que tenemos un parrafo, me gustaría observar como es que
-  \codeline{let mut s = String::new("Hello");} se vería a la mitad de un parrafo, no estoy segura de que es lo que busco, pero si de lo que no se ve.
+  \input{sections/01-common.tex}
 
 
 \end{document}

@@ -1,0 +1,51 @@
+\chapter{Conceptos Comunes de Programación}
+
+\section{Estructura básica}
+
+\paragraph{Tipo de lenguaje.} Rust es un lenguaje compilado de tipado fuerte. Es decir,
+cada variable y función tiene un tipo asociado e inmutable además de que para ejecutar
+un programa de rust se necesita crear un binario mediante el programa \codeline{rustc}.
+
+\paragraph{Cargo.} Es un programa que sirve para crear y ejecutar proyectos de rust. Los
+comandos básicos son: \codeline{cargo new} para crear un nuevo proyecto;
+\codeline{cargo run} para correr el programa; \codeline{cargo build} para crear un
+binario del proyecto.
+
+\paragraph{Hola mundo.} La estructura básica de un ``hola mundo'' en Rust es similar a C,
+basta con una función \codeline{main()} que contiene las instrucciones que se ejecutarán.
+
+Todas las instrucciones deben terminar ya sea con \codeline{;} o \codeline|}|, en el caso
+de que se esté terminando un bloque. El indentado y espaciado no son importantes para la
+ejecución del código.
+
+\begin{codeblock}
+  fn main() {
+    println!("Hola mundo");
+  }
+\end{codeblock}
+
+
+
+
+
+\section{Variables y mutabilidad}
+
+\paragraph{Variables} Se definen usando la palabra clave \codeline{let} y opcionalmente
+asignando un valor usando \codeline{=}.
+
+\begin{codeblock}
+  fn main() {
+    let x = 5;
+    println!("El valor de la variable es {x}");
+  }
+\end{codeblock}
+
+\paragraph{Variables inmutables} Estas variables no permiten modificar su valor una vez
+asignadas. Si se decide asignar otro valor con \codeline{=} se mostrará un error. 
+
+\begin{codeblock}
+  fn main() {
+    let x = 5;
+    println
+  }
+\end{codeblock}
