@@ -54,11 +54,11 @@
 
 % Pass draft mode to article class
 \ifqx@draftmode
-  \PassOptionsToClass{draft}{article}%
+  \PassOptionsToClass{draft}{report}%
 \fi
 
 % Base document class
-\LoadClass{article}
+\LoadClass{report}
 
 
 
@@ -82,7 +82,7 @@
 
 \RequirePackage{geometry}
 
-
+% This package loads the qx-page and qx-test colors, so dont need to be defined
 \RequirePackage{qx-files/qx-listings}
 
 
