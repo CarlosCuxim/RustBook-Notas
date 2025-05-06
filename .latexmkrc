@@ -1,3 +1,6 @@
+# Default file to compile
+@default_files = ("main.tex");
+
 # Change of aux files direction
 $aux_dir = './aux';
 
