@@ -122,6 +122,7 @@
   }
 }
 
+% Environments -----------------------------------
 
 % Basic code block environmet 
 \NewTCBListing{codeblock}{ !O{\qx@mainlanguage} }{
@@ -130,11 +131,44 @@
   minted language=#1
 }
 
+% Verbatim version of codeblock environment
+\newtcblisting{verbblock}{
+  qx-listing,
+  listing only,
+  minted language=text,
+}
+
+% Input commands ---------------------------------
+
+% Input code block environment
+\NewTCBInputListing{\inputcode}{ O{\qx@mainlanguage} m }{
+  listing file=#2,
+  qx-listing,
+  listing only,
+  minted language=#1,
+}
+
+% Verbatim version of \inputcode
+\NewTCBInputListing{\inputverb}{ m }{
+  listing file=#1,
+  qx-listing,
+  listing only,
+  minted language=text,
+}
+
+% In line commands -------------------------------
+
 % In line code command. Is no breakable, so must contain very few text
-\NewTotalTCBox{\codeline}{ v }{
+\NewTotalTCBox{\codeline}{ O{\qx@mainlanguage} v }{
   qx-linelisting,
   on line,
-}{\mintinline{\qx@mainlanguage}{#1}}
+}{\mintinline{#1}{#2}}
+
+% Verbatim version of \codeline
+\NewTotalTCBox{\verbline}{ v }{
+  qx-linelisting,
+  on line,
+}{\mintinline{text}{#1}}
 
 
 \endinput
